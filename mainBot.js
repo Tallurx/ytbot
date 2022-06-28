@@ -32,6 +32,10 @@ const pages = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10"]
 // The runAsenseBot is the main function (thing) that will run when ever we lauch this
 
 async function runAdsenseBot() {
+    const proxy = `http://premium.residential.proxyrack.net:9000`;
+    const username = 'legasea-country-NG';
+    const password = '72e774-68a52f-689a9a-db0fb8-3c5dc2';
+
     const bcTime = timer(1200000, 240000)
     console.log(`>>>>>>All Browsers will be closed in : ${bcTime / 60000} minutes <<<<<<`)
 
@@ -40,7 +44,7 @@ async function runAdsenseBot() {
 
     const args = [
         '--no-zygote',
-        `--proxy-server=premium.residential.proxyrack.net:9000`,
+        `--proxy-server=${proxy}`,
         '--no-sandbox',
         '--disable-gpu',
         '--disable-setuid-sandbox',
@@ -103,7 +107,7 @@ async function runAdsenseBot() {
         //console.log(" we have picked a user agent  :", userAgent)
 
 
-        let url = await getRandomItem("assets/list-of-links.json")
+        let url = await getRandomItem("assets/testlinks.json")
         // console.log(" we have picked a link", url)
 
 
@@ -115,15 +119,16 @@ async function runAdsenseBot() {
 
         try {
             const chromeBrowserPage = await browser.newPage()
+            await chromeBrowserPage.authenticate({ username, password });
             await chromeBrowserPage.setDefaultNavigationTimeout(0);
-            // await chromeBrowserPage.setViewport({
-            //     width: 1920 + Math.floor(Math.random() * 100),
-            //     height: 3000 + Math.floor(Math.random() * 100),
-            //     deviceScaleFactor: 1,
-            //     hasTouch: true,
-            //     isLandscape: false,
-            //     isMobile: false,
-            // });
+            await chromeBrowserPage.setViewport({
+                width: 1920 + Math.floor(Math.random() * 100),
+                height: 3000 + Math.floor(Math.random() * 100),
+                deviceScaleFactor: 1,
+                hasTouch: true,
+                isLandscape: false,
+                isMobile: false,
+            });
 
             await chromeBrowserPage.setUserAgent(userAgent);
             await chromeBrowserPage.setCookie(...cookies);

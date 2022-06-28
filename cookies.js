@@ -47,14 +47,15 @@ async function getRandomItem(link) {
             await page.keyboard.press('Enter')
             await sleep(5000)
             await page.waitForSelector('#gbwa > .gb_yf > .gb_A > .gb_Ue > path')
-            await sleep(5000)
+            await sleep(10000)
 
             // save cookies
-            // const cookies = await page.cookies();
-            // fs.appendFile('./cookies.json', JSON.stringify(cookies, null, 2) + ",", 'utf8');
+            const cookies = await page.cookies();
+            fs.appendFile('./cookies.json', JSON.stringify(cookies, null, 2) + ",", 'utf8');
 
             // await sleep(10000)
             console.log(`====== ${emails[all]} logged in and Cookies has beeen succesfully extracted and saved ======`)
+            await sleep(10000)
 
         } catch (e) {
             console.log(`Either ${emails[all]} or Password is incorrect`)
