@@ -1,0 +1,11 @@
+{
+  "name": "ytbot",
+  "version": "1.0.0",
+  "description": "A youtube bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "author": "Legaseas",
+  "license": "ISC"
+}
