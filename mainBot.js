@@ -107,7 +107,7 @@ async function runAdsenseBot() {
         //console.log(" we have picked a user agent  :", userAgent)
 
 
-        let url = await getRandomItem("assets/testlinks.json")
+        let url = await getRandomItem("assets/list-of-links.json")
         // console.log(" we have picked a link", url)
 
 
